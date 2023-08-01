@@ -8,11 +8,12 @@ import TodoForm from "./components/TodoForm";
 import Todo from "./components/Todo";
 
 import { Provider } from "react-redux";
+import store from "./Store";
 
 function App() {
   return (
-    <Provider>
-      <Container>
+    <Provider store={store}>
+      <Container fluid>
         <Todo />
         <TodoForm />
       </Container>

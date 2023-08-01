@@ -1,6 +1,6 @@
 import React from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
-import { FaCheckDouble } from "react-icons";
+import { FaCheckDouble } from "react-icons/fa";
 
 //redux
 import { connect } from "react-redux";
@@ -12,7 +12,7 @@ const Todo = ({ todos, markComplete }) => {
       {todos.map((todo) => (
         <ListGroupItem key={todo.id}>
           {todo.title}
-          <span onClick={() => markComplete(todo.id)} className="float-right">
+          <span onClick={() => markComplete(todo.id)} className="float-end">
             <FaCheckDouble />
           </span>
         </ListGroupItem>
@@ -21,14 +21,13 @@ const Todo = ({ todos, markComplete }) => {
   );
 };
 
-const mapStateToProps =state => ({
-    todos: state.todos
+const mapStateToProps = (state) => ({
+  todos: state.todos,
 });
-const mapDispatchToProps = dispatch => ({
-    markComplete : id =>{
+const mapDispatchToProps = (dispatch) => ({
+  markComplete: (id) => {
     dispatch(removeTodo(id));
-    },
+  },
 });
 
-
-export default connect(mapStateToProps,mapDispatchToProps) (Todo);
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);
